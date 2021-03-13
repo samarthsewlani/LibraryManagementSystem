@@ -1,0 +1,86 @@
+{% extends 'library/base3.html' %}
+{% load static %}
+{% block content %}
+
+<section id="about-us" class="about-us">
+      <div class="container">
+
+        <div class="row no-gutters">
+          <div data-aos="fade-right">
+          	<img src="{{ object.image.url }}">
+          </div>
+          <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch">
+            <div class="content d-flex flex-column justify-content-center">
+              <h3 data-aos="fade-up">{{ object.bookname }}</h3>
+              <p data-aos="fade-up">
+                {{ object.description }}
+              </p>
+              <div class="row">
+                <div class="col-md-6 icon-box" data-aos="fade-up">
+                  <i class="bx bx-receipt"></i>
+                  <h4>Category</h4>
+                  <p>{{ object.category }}</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                  <i class="bx bx-cube-alt"></i>
+                  <h4>Quantiy</h4>
+                  <p>{{ object.quantity }}</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                  <i class="bx bx-images"></i>
+                  <h4>Issues</h4>
+                  <p>{{ object.issues }}</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bx bx-shield"></i>
+                  <h4>Author</h4>
+                  <p>{{ object.author }}</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bx bx-shield"></i>
+                  <h4>Rating</h4>
+                  <p>{{ rating }}</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                  <h4><button><a href="{% url 'issue' object.id %}"> Issue</a></button></h4>
+                </div>
+                {% if user.is_superuser %}
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                	<button><a href="{% url 'bookupdate' object.id %}">
+                		Update
+                	</a></button>
+                  <button><a href="{% url 'bookadd' object.id %}">
+                    Add Books
+                  </a></button>
+                </div>
+               	{% endif %}
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="row">
+          {% for review in reviews %}
+            {% if review.rev %}
+              <div class="col-lg-4" data-aos="fade-up">
+                <div class="testimonial-item">
+                  <img src="{{ review.user.image.path }}" class="testimonial-img" alt="">
+                  <h3>{{ review.user }}</h3>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    {{ review.rev }}
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section><!-- End Testimonials Section -->
+
+      </div>
+    </section>
+
+{% endblock %}

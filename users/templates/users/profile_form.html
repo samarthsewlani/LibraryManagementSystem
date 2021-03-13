@@ -1,0 +1,25 @@
+{% extends 'library/base3.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<section id="clients" class="clients">
+    <div class="container">
+    	
+        <div class="section-title" data-aos="fade-up">
+        	<form method="POST" enctype="multipart/form-data">
+        		{% csrf_token %}
+				<h2><strong> Profile</strong></h2>
+					<img src="{{ user.profile.image.url }}">
+					{{ form|crispy }}
+				<div>
+					<button type="submit">
+						Update
+					</button>
+				</div>
+			</form>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

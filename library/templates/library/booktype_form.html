@@ -1,0 +1,23 @@
+{% extends 'library/base3.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<section id="clients" class="clients">
+    <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+        	<form method="POST" enctype="multipart/form-data">
+        		{% csrf_token %}
+				<h2>Add <strong>Books!</strong></h2>
+				{{ form|crispy }}
+				<div>
+					<button type="submit">
+						Add/Update
+					</button>
+				</div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

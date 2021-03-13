@@ -1,0 +1,38 @@
+{% extends 'library/base3.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<section id="about-us" class="about-us">
+      <div class="container">
+        <div class="col-xl-14 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch">
+            <div class="content d-flex flex-column justify-content-center">
+              <h3 data-aos="fade-up">
+              	Are you sure you want to return the book: {{ book.booktype.bookname }}
+          	  </h3>
+          	  {% if flag %}
+          	  <h3 data-aos="fade-up">
+              	Are have late submission of Rs {{ fine }} for returning book {{ days }} days late!!
+          	  </h3>
+          	  {% endif %}
+              
+              <form method="POST">
+                {% csrf_token %}
+                <button class="btn btn-dark" type="submit">
+                    Yes
+                </button><br/><br/>
+
+                <button class="btn btn-dark" type="submit">
+                	<a href="{% url 'issuedbooks' %}">
+                		Cancel
+                	</a>
+                </button><br/>
+                {{ form|crispy }}
+              </form>
+            </div>
+        </div>
+      </div>
+</section>
+
+
+{% endblock %}

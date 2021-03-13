@@ -1,0 +1,21 @@
+{% extends 'library/base3.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<section id="clients" class="clients">
+    <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+				Want to Login Again??
+				<br/>
+				<a href="{% url 'login' %}">
+					<strong>
+						Log In
+					</strong>
+				</a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

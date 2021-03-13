@@ -1,0 +1,59 @@
+{% extends 'library/base3.html' %}
+{% load static %}
+{% block content %}
+
+<section id="about-us" class="about-us">
+      <div class="container">
+
+        <div class="row no-gutters">
+          <div data-aos="fade-right">
+          	<img src="{{ object.image.url }}">
+          </div>
+          <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch">
+            <div class="content d-flex flex-column justify-content-center">
+              <h3 data-aos="fade-up">{{ object.bookname }}</h3>
+              <p data-aos="fade-up">
+                {{ object.description }}
+              </p>
+              <div class="row">
+                <div class="col-md-6 icon-box" data-aos="fade-up">
+                  <i class="bx bx-receipt"></i>
+                  <h4>Category</h4>
+                  <p>{{ object.category }}</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                  <i class="bx bx-cube-alt"></i>
+                  <h4> Quantity</h4>
+                  <p>{{ object.quantity }}</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                  <i class="bx bx-images"></i>
+                  <h4>Issues</h4>
+                  <p>{{ object.issues }}</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bx bx-shield"></i>
+                  <h4>Author</h4>
+                  <p>{{ object.author }}</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                  <form method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    
+
+                  <button type="submit">
+                    Add
+                  </button>
+                  </form>
+                </div>
+                
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+{% endblock %}
